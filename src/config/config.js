@@ -138,3 +138,4 @@
         "https://www.edamam.com/food-img/541/541e46e44ba61aec8bcd599df94c0eed.jpg",
     },
   ];
+  export let notfoundImg = "https://static.vecteezy.com/system/resources/previews/022/752/919/large_2x/delivery-guy-taking-break-empty-state-illustration-editable-404-not-found-for-ux-ui-design-fast-food-restaurant-isolated-flat-cartoon-character-on-white-error-flash-message-for-website-app-vector.jpg"

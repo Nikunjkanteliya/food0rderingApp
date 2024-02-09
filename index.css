@@ -104,3 +104,9 @@
    opacity: 1;
    transition: visibility 0s, opacity 0.5s;
     }
+    
+    .card_Wrapper>.nostfoind_Masterdiv>p { text-align: center;}
+    .card_Wrapper>.nostfoind_Masterdiv>img {
+        max-width: 900px;
+        max-height: 400px;
+    }
