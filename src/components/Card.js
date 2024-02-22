@@ -7,15 +7,12 @@ const Card = ({
   cloudinaryImageId,
   cuisines,
   avgRating,
-  link,
 }) => {
   const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/";
   return (
-    <div className="restrauntcard_items" key={id}>
+    <div className="restrauntcard_items">
       <div>
-        <a href={link}>
-          <img src={`${IMG_CDN_URL}${cloudinaryImageId}`} alt="img" />
-        </a>
+        <img src={`${IMG_CDN_URL}${cloudinaryImageId}`} alt="img" />
       </div>
       <div className="context_wrapper">
         <div>

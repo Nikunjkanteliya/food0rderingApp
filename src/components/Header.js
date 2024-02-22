@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <div className="headerbar-Wrapper">
@@ -11,10 +13,19 @@ const Header = () => {
 
       <div>
         <ul id="headerBar-ul">
-          <li>Home</li>
-          <li>Options</li>
-          <li>Cart</li>
-          <li>About us</li>
+          <Link to="/">
+            {" "}
+            <li>Home</li>
+          </Link>
+          <Link to="/options">
+            <li>Options</li>
+          </Link>
+          <Link to="/cart">
+            <li>Cart</li>{" "}
+          </Link>
+          <Link to="/aboutus">
+            <li>About us</li>
+          </Link>
         </ul>
       </div>
     </div>

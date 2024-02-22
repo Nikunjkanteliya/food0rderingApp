@@ -190,3 +190,7 @@ export let ratingStart = (
     </defs>
   </svg>
 );
+
+export let vegSign = "https://img.icons8.com/color/48/vegetarian-food-symbol.png";
+export let nonVeg =
+  "https://infoseekershub.com/wp-content/uploads/2019/08/non-veg.jpg";

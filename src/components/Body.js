@@ -3,6 +3,7 @@ import Card from "./Card";
 import Notfound from "./Notfound";
 import { searchSvg } from "../config/config";
 import Shimmereffect from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = () => {
   let [codeData, setcodeData] = useState([]);
   let [apidata, setapidata] = useState([]);
@@ -64,13 +65,17 @@ const Body = () => {
           {notfound && <Notfound props={searchvalue} />}
           {codeData.length > 0
             ? codeData.map((item, index) => (
-                <Card {...item.info} key={index} {...item.cta} />
+                <Link key={item.info.id} to={"/restrauntmenu/" + item.info.id}>
+                  <Card {...item.info} key={index} {...item.cta} />
+                </Link>
               ))
             : apidata &&
               apidata.length > 0 &&
               !notfound &&
               apidata.map((ele, index) => (
-                <Card {...ele.info} key={index} {...ele.cta} />
+                <Link key={ele.info.id} to={"/restrauntmenu/" + ele.info.id}>
+                  <Card {...ele.info} {...ele.cta} />
+                </Link>
               ))}
         </div>
       </div>
