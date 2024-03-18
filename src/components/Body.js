@@ -1,67 +1,64 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from "./Card";
+import { filteredData } from "../utilis/helper";
 import Notfound from "./Notfound";
-import { searchSvg } from "../config/config";
+// import { searchSvg } from "../config/config";
 import Shimmereffect from "./Shimmer";
 import { Link } from "react-router-dom";
+import useCarddata from "../utilis/useCarddata";
 const Body = () => {
   let [codeData, setcodeData] = useState([]);
-  let [apidata, setapidata] = useState([]);
   let [searchvalue, setsearchvalue] = useState("");
   let [notfound, setnotFound] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      const apiData = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6110886&lng=77.2345184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
-      if (!apiData.ok) {
-        throw new Error("Failed to fetch data from the server");
-      }
 
-      const apijsonData = await apiData.json();
-      const apiRestraunt =
-        apijsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
-      setapidata(apiRestraunt);
-    }
-    fetchData();
-  }, []);
-
+  let { apidata } = useCarddata();
   let searchFilter = () => {
-    let filteredData = apidata?.filter((ele) =>
-      ele.info.name
-        .toLocaleLowerCase()
-        .includes(searchvalue.toLocaleLowerCase())
-    );
+    let filter_Data = filteredData(apidata, searchvalue);
 
-    if (filteredData.length <= 0) {
+    if (filter_Data.length <= 0) {
       setnotFound(true);
-    } else if (filteredData.length > 0) {
+    } else if (filter_Data.length > 0) {
       setnotFound(false);
     }
-    setcodeData(filteredData);
+    setcodeData(filter_Data);
   };
   return apidata?.length === 0 ? (
     <Shimmereffect />
   ) : (
-    <div className="body_background_color_wrapper">
-      <div className="bodyContainer">
-        <div className="search_bar">
-          <input
-            type="text"
-            placeholder="search..."
-            title="search Bar"
-            name="search bar"
-            onChange={(e) => {
-              setsearchvalue(e.target.value);
-            }}
-          ></input>
-          <button onClick={searchFilter} className="searchIcon">
-            {searchSvg}
-          </button>
+    <div>
+      <div>
+        <div className="ml-auto mr-auto mt-0 mb-0 max-w-[1200px] p-2 flex justify-center items-center">
+          <div className="relative max-w-sm mx-auto w-[300px]">
+            <input
+              className="w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              type="search"
+              placeholder="Search"
+              onChange={(e) => {
+                setsearchvalue(e.target.value);
+              }}
+              value={searchvalue}
+            ></input>
+            <button
+              className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-700 bg-gray-100 border border-gray-300 rounded-r-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              onClick={searchFilter}
+            >
+              <svg
+                className="h-5 w-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M14.795 13.408l5.204 5.204a1 1 0 01-1.414 1.414l-5.204-5.204a7.5 7.5 0 111.414-1.414zM8.5 14A5.5 5.5 0 103 8.5 5.506 5.506 0 008.5 14z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        <div className="card_Wrapper">
+        <div className="max-w-[1020px] ml-auto mr-auto mt-0 mb-0 px-4 py-0 flex items-center justify-center flex-wrap ">
           {notfound && <Notfound props={searchvalue} />}
           {codeData.length > 0
             ? codeData.map((item, index) => (

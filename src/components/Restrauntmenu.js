@@ -1,51 +1,51 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { IMG_CDN_URL } from "../config/config";
 import Shimmereffect from "./Shimmer";
 import Foodmenu from "./Foodmenu";
 import Crausoul from "./Crausoul";
+// import { getPlaceFromCoordinates } from "../utilis/helper";
+import useMenudata from "../utilis/useMenudata";
+import { ratingStars } from "../utilis/helper";
+
 const Restrauntmenu = () => {
-  let [menucardata, setMenucardata] = useState([]);
-  let [menulist, setMenulist] = useState([]);
-  let [crausouledata, setCrausouledata] = useState([]);
-
-  let { id } = useParams();
-  const menu_url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6110886&lng=77.2345184&restaurantId=${id}`;
-
-  useEffect(() => {
-    async function fetchMenu() {
-      const fetchedMenu = await fetch(menu_url);
-      const fetchedMenujson = await fetchedMenu.json();
-      setMenucardata(fetchedMenujson.data.cards[2].card.card.info);
-
-      setMenulist(
-        fetchedMenujson?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-          ?.cards[2].card.card.itemCards
-      );
-
-      setCrausouledata(
-        fetchedMenujson?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-          ?.cards[1].card.card.carousel
-      );
-    }
-    fetchMenu();
-  }, []);
-
-  const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/";
+  let { menucardata, menulist, crausouledata, particularAddress } =
+    useMenudata();
 
   return menucardata.length === 0 && crausouledata.length === 0 ? (
     <Shimmereffect />
   ) : (
-    <div className="restrauntmenu_wrapper">
-      <div>
-        <img
-          src={IMG_CDN_URL + menucardata.cloudinaryImageId}
-          width={"100px"}
-        />
-      </div>
-      <div> {menucardata.name} </div>
-      <div> {`${menucardata.city} , ${menucardata.areaName}`}</div>
+    <div>
+      <div className="flex mx-auto my-[0px]  max-w-[1020px] p-[15px] items-center justify-center gap-[200px] ">
+        <div>
+          <img
+            src={IMG_CDN_URL + menucardata.cloudinaryImageId}
+            width={"100px"}
+            className="rounded-md "
+          />
+        </div>
+        <div>
+          <div className="text-[1.43rem] font-[600] text-[#282c3f] uppercase">
+            {" "}
+            {menucardata.name}{" "}
+          </div>
+          <div>{menucardata?.cuisines.join(" , ")}</div>
 
-      <div>
+          <div className="max-w-[400px]"> {particularAddress}</div>
+          <div>
+            {
+              <div class="flex items-center">
+                <div>
+                  <div className="flex items-center">
+                    {ratingStars(menucardata.avgRating)}
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[600px] mx-auto my-0">
         {
           <Crausoul>
             {crausouledata?.map((ele, index) => {

@@ -2,9 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { IMG_CDN_URL } from "../config/config";
 
 const Crausoul = (props) => {
-  const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/";
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -68,15 +68,15 @@ const Crausoul = (props) => {
     ],
   };
   return (
-    <Slider {...settings} className="slider">
+    <Slider {...settings} >
       {props?.children?.map((ele, indx) => {
         return (
-          <div className="slider_img_wrapper" key={indx}>
+          <div className="p-5 relative" key={indx}>
             <img
-              className="slider_img"
+              className="rounded-lg max-h-[450px]"
               src={`${IMG_CDN_URL}${ele.props.img}`}
             />
-            <p className="price_chart">
+            <p className="absolute bottom-[50px] left-[50px] text-[#fff] font-[400] text-[1rem] font-Basis_Grotesque_Pro_Bold">
               {ele.props.price !== undefined
                 ? ele.props.price / 100
                 : ele.props.defaultPrice / 100}

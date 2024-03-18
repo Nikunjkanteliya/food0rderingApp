@@ -191,6 +191,12 @@ export let ratingStart = (
   </svg>
 );
 
-export let vegSign = "https://img.icons8.com/color/48/vegetarian-food-symbol.png";
+export let vegSign =
+  "https://img.icons8.com/color/48/vegetarian-food-symbol.png";
 export let nonVeg =
   "https://infoseekershub.com/wp-content/uploads/2019/08/non-veg.jpg";
+
+export let main_api_url =
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING";
+
+export const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/";
