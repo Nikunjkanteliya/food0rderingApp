@@ -22,11 +22,11 @@ const Foodapp = () => {
   //   info: { name: "lucifer", date: new Date().toLocaleDateString() },
   // });
   return (
- <Provider store={store}>
+    <Provider store={store}>
       <Header />
       <Outlet />
       <Footer />
-      </Provider>
+    </Provider>
   );
 };
 

@@ -14,7 +14,7 @@ const Restrauntmenu = () => {
   return menucardata.length === 0 && crausouledata.length === 0 ? (
     <Shimmereffect />
   ) : (
-    <div>
+    <div className="min-h-[100vh]">
       <div className="flex mx-auto my-[0px]  max-w-[1020px] p-[15px] items-center justify-center gap-[200px] ">
         <div>
           <img
@@ -57,11 +57,11 @@ const Restrauntmenu = () => {
         }
       </div>
 
-      <ul>
+      <table className="max-w-[568px] mx-auto my-8 p-6">
         {menulist?.map((ele, indx) => {
           return <Foodmenu {...ele.card.info} key={indx} />;
         })}
-      </ul>
+      </table>
     </div>
   );
 };

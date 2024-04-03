@@ -19,7 +19,7 @@ function ShimmerPostListWrapper() {
       gap={gap}
       center={centre}
       fitOnFrame={true}
-      className="max-w-[1020px] mx-[auto] mt-[56px]"
+      className="max-w-[1020px] mx-[auto] mt-[56px] min-h-[100vh]"
     />
   );
 }

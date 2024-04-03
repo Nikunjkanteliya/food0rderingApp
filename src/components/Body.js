@@ -23,7 +23,7 @@ const Body = () => {
     setcodeData(filter_Data);
   };
   return apidata?.length === 0 ? (
-    <Shimmereffect />
+    <Shimmereffect data-testid="shimmerEffect" />
   ) : (
     <div>
       <div>

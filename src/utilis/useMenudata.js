@@ -15,29 +15,30 @@ const useMenudata = () => {
     async function fetchMenu() {
       const fetchedMenu = await fetch(menu_url);
       const fetchedMenujson = await fetchedMenu.json();
-      setMenucardata(fetchedMenujson?.data?.cards[0]?.card?.card?.info);
+      setMenucardata(fetchedMenujson?.data?.cards[2]?.card?.card?.info);
 
       setparticularAddress(
-        fetchedMenujson?.data?.cards[0]?.card?.card?.info?.labels[1]?.message
+        fetchedMenujson?.data?.cards[2]?.card?.card?.info?.labels[1]?.message
       );
 
       {
         fetchedMenujson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
           ?.cards[2].card.card.itemCards === undefined
           ? setMenulist(
-              fetchedMenujson?.data?.cards[2]?.groupedCard?.cardGroupMap
-                ?.REGULAR?.cards[8].card.card.itemCards
+              fetchedMenujson?.data?.cards[4]?.groupedCard?.cardGroupMap
+                ?.REGULAR?.cards[1].card.card.itemCards
             )
           : setMenulist(
-              fetchedMenujson?.data?.cards[2]?.groupedCard?.cardGroupMap
+              fetchedMenujson?.data?.cards[4]?.groupedCard?.cardGroupMap
                 ?.REGULAR?.cards[2].card.card.itemCards
             );
       }
 
       setCrausouledata(
-        fetchedMenujson?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
-          ?.cards[1].card.card.carousel
+        fetchedMenujson?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
+          ?.cards[4].card.card.carousel
       );
+      console.log(fetchedMenujson?.data);
     }
 
     fetchMenu();

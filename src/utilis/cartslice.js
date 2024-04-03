@@ -12,17 +12,25 @@ const cartslice = createSlice({
     addtocart: (state, action) => {
       const newItem = action.payload;
       let existingItem = state.cartItems.find((item) => item.id === newItem.id);
+    
       if (!existingItem) {
+        // If item not in cart, add it with quantity 1
         state.cartItems.push({ ...newItem, quantity: 1 });
-      } else {
-        // existingItem.quantity++;
-      }
-      state.totalBill +=
-        newItem.price !== undefined
+        state.totalBill += newItem.price !== undefined
           ? newItem.price / 100
           : newItem.defaultPrice / 100;
+      } else {
+        // If item already exists in cart, increment the quantity and adjust the total price
+        // existingItem.quantity++; // Increase the quantity
+        // state.totalBill += newItem.price !== undefined
+        //   ? newItem.price / 100
+        //   : newItem.defaultPrice / 100;
+      }
+    
       state.totalItems++;
-    },
+    }
+    
+    ,
     additem(state, action) {
       const newItem = action.payload;
       let existingItem = state.cartItems.find((item) => item.id === newItem.id);
