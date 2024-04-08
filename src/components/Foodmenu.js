@@ -71,64 +71,65 @@ const Foodmenu = ({
     //   </div>
     //   <ToastContainer />
     // </div>
+    <tbody>
+      <tr className="border-b-[0.5px] border-[#d3d3d3]">
+        <td className="w-[118px] h-[96px] p-[5px] [&>img]:rounded-[6px] ">
+          {" "}
+          {imageId !== undefined ? (
+            <img src={IMG_CDN_URL + imageId} />
+          ) : (
+            <img src="https://c8.alamy.com/comp/2PGBJ8N/food-bowl-icon-outline-vector-meal-snack-kid-nutrition-2PGBJ8N.jpg" />
+          )}
+        </td>
+        <td>
+          {" "}
+          {itemAttribute.vegClassifier === "VEG" ? (
+            <img src={vegSign} width={"40px"} height={"40px"} />
+          ) : (
+            <img src={nonVeg} width={"35px"} height={"35px"} />
+          )}
+        </td>
+        <td className="p-[10px] text-[1rem] font-[500] text-[#3e4152]">
+          <p> {name}</p>
+          <p className=" font-[400]">
+            <span className="mx-1">{"\u20B9"}</span>
+            {Math.round(price !== undefined ? price / 100 : defaultPrice / 100)}
+          </p>
+        </td>
 
-    <tr className="border-b-[0.5px] border-[#d3d3d3]">
-      <td className="w-[118px] h-[96px] p-[5px] [&>img]:rounded-[6px] ">
-        {" "}
-        {imageId !== undefined ? (
-          <img src={IMG_CDN_URL + imageId} />
-        ) : (
-          <img src="https://c8.alamy.com/comp/2PGBJ8N/food-bowl-icon-outline-vector-meal-snack-kid-nutrition-2PGBJ8N.jpg" />
-        )}
-      </td>
-      <td>
-        {" "}
-        {itemAttribute.vegClassifier === "VEG" ? (
-          <img src={vegSign} width={"40px"} height={"40px"} />
-        ) : (
-          <img src={nonVeg} width={"35px"} height={"35px"} />
-        )}
-      </td>
-      <td className="p-[10px] text-[1rem] font-[500] text-[#3e4152]">
-        <p> {name}</p>
-        <p className=" font-[400]">
-          <span className="mx-1">{"\u20B9"}</span>
-          {Math.round(price !== undefined ? price / 100 : defaultPrice / 100)}
-        </p>
-      </td>
-
-      <td className="text-center">
-        <button
-          className="w-[96px] h-[36px] p-1 shadow-md m-2 text-[#60b246] font-semibold rounded-md border-[0.5px] border-[#60b246] hover:bg-[#60b246]  hover:text-[#fff] hover:font-semibold transition ease-in-out delay-100"
-          onClick={() => {
-            dispatch(
-              addtocart({
-                name,
-                price,
-                imageId,
-                itemAttribute,
-                defaultPrice,
-                id,
-                quantity: 1,
-              })
-            );
-            toast(name + " Added 2 Cart 😍", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-          }}
-        >
-          ADD
-        </button>
-      </td>
-      <ToastContainer />
-    </tr>
+        <td className="text-center">
+          <button
+            className="w-[96px] h-[36px] p-1 shadow-md m-2 text-[#60b246] font-semibold rounded-md border-[0.5px] border-[#60b246] hover:bg-[#60b246]  hover:text-[#fff] hover:font-semibold transition ease-in-out delay-100"
+            onClick={() => {
+              dispatch(
+                addtocart({
+                  name,
+                  price,
+                  imageId,
+                  itemAttribute,
+                  defaultPrice,
+                  id,
+                  quantity: 1,
+                })
+              );
+              toast(name + " Added 2 Cart 😍", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+            }}
+          >
+            ADD
+          </button>
+        </td>
+        <ToastContainer />
+      </tr>
+    </tbody>
   );
 };
 

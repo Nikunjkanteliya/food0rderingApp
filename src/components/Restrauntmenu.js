@@ -22,6 +22,7 @@ const Restrauntmenu = () => {
             width={"100px"}
             className="rounded-md "
           />
+          {console.log(menucardata.cloudinaryImageId)}
         </div>
         <div>
           <div className="text-[1.43rem] font-[600] text-[#282c3f] uppercase">
@@ -33,7 +34,7 @@ const Restrauntmenu = () => {
           <div className="max-w-[400px]"> {particularAddress}</div>
           <div>
             {
-              <div class="flex items-center">
+              <div className="flex items-center">
                 <div>
                   <div className="flex items-center">
                     {ratingStars(menucardata.avgRating)}
@@ -45,7 +46,7 @@ const Restrauntmenu = () => {
         </div>
       </div>
 
-      <div className="w-[600px] mx-auto my-0">
+      {/* <div className="w-[600px] mx-auto my-0">
         {
           <Crausoul>
             {crausouledata?.map((ele, index) => {
@@ -55,7 +56,7 @@ const Restrauntmenu = () => {
             })}
           </Crausoul>
         }
-      </div>
+      </div> */}
 
       <table className="max-w-[568px] mx-auto my-8 p-6">
         {menulist?.map((ele, indx) => {

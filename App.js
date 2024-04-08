@@ -12,6 +12,8 @@ import Restrauntmenu from "./src/components/Restrauntmenu";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./src/utilis/store";
+import Signin from "./src/components/Signin";
+import Signup from "./src/components/Signup";
 
 // import contextCreated from "./src/utilis/context";
 // let Restrauntmenu = lazy(() => {
@@ -23,9 +25,17 @@ const Foodapp = () => {
   // });
   return (
     <Provider store={store}>
-      <Header />
+      {window.location.pathname === "/" ||
+      window.location.pathname === "/signin" ? null : (
+        <Header />
+      )}
+
       <Outlet />
-      <Footer />
+      {window.location.pathname === "/" ||
+      window.location.pathname === "/signin" ? null : (
+        <Footer />
+      )}
+      {/* <Footer /> */}
     </Provider>
   );
 };
@@ -36,7 +46,8 @@ const router = createBrowserRouter([
     element: <Foodapp />,
     errorElement: <Errorpage />,
     children: [
-      { path: "/", element: <Body /> },
+      { path: "/", element: <Signup /> },
+      { path: "/body", element: <Body /> },
       {
         path: "/aboutus",
         element: <Aboutus />,
@@ -53,6 +64,10 @@ const router = createBrowserRouter([
         //     <Restrauntmenu />
         //   </Suspense>
         // ),
+      },
+      {
+        path: "/signin",
+        element: <Signin />,
       },
     ],
   },
