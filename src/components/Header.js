@@ -7,7 +7,7 @@ const Header = () => {
     <div className="flex justify-between align-middle p-3 max-w-[1400px] ml-auto mr-auto mt-0 mb-0 text-neutral-500 text-lg sm:text-[13px] ">
       <div className="w-[50px]">
         {" "}
-        <Link to="/">
+        <Link to="/body">
           <img
             className=" rounded-xl"
             data-testid="headerSrc"
