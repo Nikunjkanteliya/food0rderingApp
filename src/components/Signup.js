@@ -132,6 +132,7 @@ const Signup = () => {
                 }}
               >
                 {showpass ? <EyeOff /> : <Eye />}
+                {/* <EyeOff /> */}
               </p>
             </div>
 

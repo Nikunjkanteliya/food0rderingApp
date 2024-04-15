@@ -37,7 +37,7 @@ const Cart = () => {
             <p className="text-[#535665] font-[600] text-[20px] text-center">
               Your cart is empty
             </p>
-            <Link to={"/"}>
+            <Link to={"/body"}>
               <button className="py-[11px] px-[20px] uppercase text-[#fff] text-center text-[15px] font-[600] bg-[#fc8019] mt-7 rounded-md opacity-100 hover:opacity-80">
                 {" "}
                 See restaurants near you

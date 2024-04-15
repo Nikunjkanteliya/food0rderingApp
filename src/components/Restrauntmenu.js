@@ -15,16 +15,16 @@ const Restrauntmenu = () => {
     <Shimmereffect />
   ) : (
     <div className="min-h-[100vh]">
-      <div className="flex mx-auto my-[0px]  max-w-[1020px] p-[15px] items-center justify-center gap-[200px] ">
-        <div>
+      <div className="flex mx-auto my-[0px]  max-w-[1020px] p-[15px] items-center justify-center gap-[200px] sm:flex-col sm:gap-[50px] ">
+        <div className="sm:flex sm:items-center sm:justify-center">
           <img
             src={IMG_CDN_URL + menucardata.cloudinaryImageId}
             width={"100px"}
-            className="rounded-md "
+            className="rounded-md  sm:w-2/4"
           />
-          {console.log(menucardata.cloudinaryImageId)}
+          {/* {console.log(menucardata.cloudinaryImageId)} */}
         </div>
-        <div>
+        <div className=" sm:text-center">
           <div className="text-[1.43rem] font-[600] text-[#282c3f] uppercase">
             {" "}
             {menucardata.name}{" "}
@@ -34,9 +34,9 @@ const Restrauntmenu = () => {
           <div className="max-w-[400px]"> {particularAddress}</div>
           <div>
             {
-              <div className="flex items-center">
+              <div className="flex items-center sm:justify-center">
                 <div>
-                  <div className="flex items-center">
+                  <div className="flex items-center ">
                     {ratingStars(menucardata.avgRating)}
                   </div>
                 </div>

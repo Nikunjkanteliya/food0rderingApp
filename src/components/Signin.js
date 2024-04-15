@@ -19,6 +19,7 @@ const initialValues = {
   password: "",
 };
 const Signin = () => {
+  const navigate = useNavigate();
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
       initialValues: initialValues,
@@ -26,6 +27,7 @@ const Signin = () => {
       onSubmit: async (value, action) => {
         try {
           await signInWithEmailAndPassword(auth, value.email, value.password);
+          navigate("/body");
         } catch (error) {
           toast(`${error}`, {
             position: "top-right",
@@ -45,7 +47,7 @@ const Signin = () => {
   // const [email, setemail] = useState("");
   // const [pass, setpass] = useState("");
   const [showpass, setShowpass] = useState(false);
-  const navigate = useNavigate();
+
   const handlegoogleauth = async (e) => {
     const provider = new GoogleAuthProvider();
     try {
@@ -132,8 +134,8 @@ const Signin = () => {
               {errors.password}
             </p>
           ) : null}
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5 w-[350px] md:w-[300px]">
-            Register
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md mt-5 w-[350px] md:w-[300px]" type="submit">
+            Sign in
           </button>
         </form>
         <div className="w-[350px]">
